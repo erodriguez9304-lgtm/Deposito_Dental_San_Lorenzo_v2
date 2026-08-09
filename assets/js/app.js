@@ -1,4 +1,12 @@
 // Depósito Dental San Lorenzo - Landing JS con galería lightbox
+
+// El manifest.json permite "agregar a pantalla de inicio", pero no queremos
+// que el navegador muestre automáticamente el aviso emergente de "Instalar
+// app" sin que el usuario lo pida. Esto lo evita.
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+});
+
 const fotos = [
   { file: '1.jpeg', alt: 'Interior del Depósito Dental San Lorenzo con anaqueles de insumos' },
   { file: '2.jpeg', alt: 'Mostrador de atención al cliente en Depósito Dental San Lorenzo' },
