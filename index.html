@@ -3,8 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Depósito Dental San Lorenzo | Insumos odontológicos en CDMX</title>
-  <meta name="description" content="Venta de insumos, materiales y equipos dentales. Atención a odontólogos, clínicas y laboratorios. Ubicados en CDMX, entregas express.">
+
+  <!-- Aplica el tema guardado (o el del sistema, en modo automático) antes de
+       pintar la página, para evitar un parpadeo claro↔oscuro al cargar. -->
+  <script>
+  (function () {
+      try {
+          var KEY = "ddsl_theme";
+          var ORDER = ["light", "dark", "auto"];
+          var stored = localStorage.getItem(KEY);
+          var pref = ORDER.indexOf(stored) !== -1 ? stored : "auto";
+          var effective = pref === "auto"
+              ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
+              : pref;
+          document.documentElement.setAttribute("data-theme", effective);
+          document.documentElement.setAttribute("data-theme-pref", pref);
+      } catch (e) { /* almacenamiento no disponible: se queda con el claro por defecto */ }
+  })();
+  </script>
+
+  <title data-section="meta" data-value="title">Depósito Dental San Lorenzo | Insumos odontológicos en CDMX</title>
+  <meta name="description" data-section="meta" data-value="description" content="Venta de insumos, materiales y equipos dentales. Atención a odontólogos, clínicas y laboratorios. Ubicados en CDMX, entregas express.">
   <meta name="author" content="Depósito Dental San Lorenzo">
   <meta name="theme-color" content="#1e3a8a">
 
@@ -91,12 +110,24 @@
   <!-- Header fijo con logo y navegación mínima -->
   <header class="landing-header">
     <div class="container header-flex">
-      <img src="assets/img/logo.svg" alt="Depósito Dental San Lorenzo" class="logo" width="200" height="50">
+      <img src="assets/img/logo.svg" alt="Depósito Dental San Lorenzo" class="logo" width="200" height="50" id="site-logo">
       <nav>
-        <a href="#inicio" class="nav-link">Inicio</a>
-        <a href="#productos" class="nav-link">Productos</a>
-        <a href="#ubicacion" class="nav-link">Ubicación</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="#inicio" class="nav-link" data-section="nav" data-value="inicio">Inicio</a>
+        <a href="#productos" class="nav-link" data-section="nav" data-value="productos">Productos</a>
+        <a href="#ubicacion" class="nav-link" data-section="nav" data-value="ubicacion">Ubicación</a>
+        <a href="#contacto" class="nav-link" data-section="nav" data-value="contacto">Contacto</a>
+        <span class="lang-selector" role="group" aria-label="Cambiar idioma">
+          <button type="button" class="lang-btn is-active" data-lang="es" aria-pressed="true">ES</button>
+          <span class="lang-divider" aria-hidden="true">|</span>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </span>
+        <span class="theme-selector">
+          <button type="button" class="theme-toggle" data-theme-state="auto" aria-label="Cambiar tema">
+            <svg class="icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="icon-dark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"></path></svg>
+          </button>
+        </span>
       </nav>
     </div>
   </header>
@@ -106,14 +137,14 @@
     <section id="inicio" class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <span class="hero-badge">📦 Distribuidor autorizado</span>
-          <h1>Depósito Dental <span class="highlight">San Lorenzo</span></h1>
-          <p>Más de 15 años abasteciendo a odontólogos, clínicas y laboratorios con insumos de alta calidad. Entrega express en CDMX y área metropolitana.</p>
+          <span class="hero-badge" data-section="hero" data-value="badge">📦 Distribuidor autorizado</span>
+          <h1 data-section="hero" data-value="title">Depósito Dental <span class="highlight">San Lorenzo</span></h1>
+          <p data-section="hero" data-value="desc">Más de 15 años abasteciendo a odontólogos, clínicas y laboratorios con insumos de alta calidad. Entrega express en CDMX y área metropolitana.</p>
           <div class="hero-buttons">
             <a href="https://wa.me/525541870200?text=Hola,%20quiero%20cotizar%20insumos%20dentales." class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-track="whatsapp-hero-principal">
-              📲 Cotizar por WhatsApp 55 4187 0200
+              <span data-section="hero" data-value="btnCotizar">📲 Cotizar por WhatsApp 55 4187 0200</span>
             </a>
-            <a href="#productos" class="btn btn-secondary">Ver productos →</a>
+            <a href="#productos" class="btn btn-secondary" data-section="hero" data-value="btnVerProductos">Ver productos →</a>
           </div>
           <div class="hero-buttons-secondary">
             <a href="https://wa.me/525530386232?text=Hola,%20quiero%20cotizar%20insumos%20dentales." class="btn-link" target="_blank" rel="noopener noreferrer" data-track="whatsapp-hero-secundario">📲 55 3038 6232</a>
@@ -121,9 +152,9 @@
             <a href="tel:5541870200" class="btn-link" data-track="llamada-hero-2">📞 55 4187 0200</a>
           </div>
           <div class="trust-badges">
-            <span>✅ Precios competitivos</span>
-            <span>⚡ Entrega el mismo día</span>
-            <span>🦷 Atención personalizada</span>
+            <span data-section="hero" data-value="trust1">✅ Precios competitivos</span>
+            <span data-section="hero" data-value="trust2">⚡ Entrega el mismo día</span>
+            <span data-section="hero" data-value="trust3">🦷 Atención personalizada</span>
           </div>
         </div>
         <div class="hero-image">
@@ -138,7 +169,7 @@
     <!-- Galería del local (fotos reales) -->
     <section class="gallery">
       <div class="container">
-        <h2 class="section-title">📸 Conoce nuestro depósito</h2>
+        <h2 class="section-title" data-section="gallery" data-value="title">📸 Conoce nuestro depósito</h2>
         <div class="gallery-grid" id="galleryGrid">
           <!-- Se llena con JS desde assets/js/app.js -->
         </div>
@@ -148,42 +179,42 @@
     <!-- Sección productos destacados -->
     <section id="productos" class="products-showcase">
       <div class="container">
-        <h2 class="section-title">🦷 Lo que ofrecemos</h2>
+        <h2 class="section-title" data-section="products" data-value="title">🦷 Lo que ofrecemos</h2>
         <div class="products-grid-landing">
           <div class="product-card-landing">
             <div class="product-icon">💉</div>
-            <h3>Anestésicos y consumibles</h3>
-            <p>Cartuchos, agujas, jeringas y más.</p>
+            <h3 data-section="products" data-value="p1Title">Anestésicos y consumibles</h3>
+            <p data-section="products" data-value="p1Desc">Cartuchos, agujas, jeringas y más.</p>
           </div>
           <div class="product-card-landing">
             <div class="product-icon">🪥</div>
-            <h3>Material de profilaxis</h3>
-            <p>Pastas, cepillos, copas y hilo dental.</p>
+            <h3 data-section="products" data-value="p2Title">Material de profilaxis</h3>
+            <p data-section="products" data-value="p2Desc">Pastas, cepillos, copas y hilo dental.</p>
           </div>
           <div class="product-card-landing">
             <div class="product-icon">🔬</div>
-            <h3>Resinas y adhesivos</h3>
-            <p>De primeras marcas y excelente durabilidad.</p>
+            <h3 data-section="products" data-value="p3Title">Resinas y adhesivos</h3>
+            <p data-section="products" data-value="p3Desc">De primeras marcas y excelente durabilidad.</p>
           </div>
           <div class="product-card-landing">
             <div class="product-icon">⚙️</div>
-            <h3>Instrumental rotatorio</h3>
-            <p>Fresas, turbinas, piezas de mano.</p>
+            <h3 data-section="products" data-value="p4Title">Instrumental rotatorio</h3>
+            <p data-section="products" data-value="p4Desc">Fresas, turbinas, piezas de mano.</p>
           </div>
           <div class="product-card-landing">
             <div class="product-icon">🧪</div>
-            <h3>Impresión y cementado</h3>
-            <p>Siliconas, alginatos, cementos.</p>
+            <h3 data-section="products" data-value="p5Title">Impresión y cementado</h3>
+            <p data-section="products" data-value="p5Desc">Siliconas, alginatos, cementos.</p>
           </div>
           <div class="product-card-landing">
             <div class="product-icon">📦</div>
-            <h3>Equipo para laboratorio</h3>
-            <p>Micro motor, vibradores, recortadoras.</p>
+            <h3 data-section="products" data-value="p6Title">Equipo para laboratorio</h3>
+            <p data-section="products" data-value="p6Desc">Micro motor, vibradores, recortadoras.</p>
           </div>
         </div>
         <div class="text-center" style="margin-top: 2rem;">
           <a href="https://wa.me/525541870200?text=Hola,%20quisiera%20ver%20el%20catálogo%20completo." class="btn btn-outline" target="_blank" rel="noopener noreferrer" data-track="whatsapp-catalogo">
-            📋 Ver catálogo completo por WhatsApp
+            <span data-section="products" data-value="btnCatalogo">📋 Ver catálogo completo por WhatsApp</span>
           </a>
         </div>
       </div>
@@ -193,40 +224,40 @@
     <section id="ubicacion" class="location-section">
       <div class="container">
         <!-- 1. El título ahora está fuera, centrado respecto a toda la sección -->
-        <h2 class="section-title">📍 Encuéntranos</h2>
-        
+        <h2 class="section-title" data-section="location" data-value="title">📍 Encuéntranos</h2>
+
         <div class="location-grid">
           <!-- 2. Este bloque ahora solo contiene la tarjeta, alineándose perfectamente a la par del mapa -->
           <div class="location-info">
             <div class="address-card">
-              <p><strong>Dirección:</strong><br>
+              <p data-section="location" data-value="address"><strong>Dirección:</strong><br>
               Av. Tlahuac 5171, 1er piso, San Lorenzo Tezonco, Iztapalapa, 09900 Ciudad de México, CDMX</p>
-              <p><strong>Referencia:</strong> A 100 Mts de la estación Tezonco línea 12 del metro CDMX.</p>
-              <p><strong>Horarios:</strong><br>
+              <p data-section="location" data-value="reference"><strong>Referencia:</strong> A 100 Mts de la estación Tezonco línea 12 del metro CDMX.</p>
+              <p data-section="location" data-value="hours"><strong>Horarios:</strong><br>
               Lunes a Viernes: 9:00 am - 6:40 pm<br>
               Sábados: 9:00 am - 3:40 pm<br>
-              Domingo: Cerrado</p>			  
-				<p style="margin-bottom: 0.5rem;"><strong>📞 Teléfonos de Atención:</strong></p>
+              Domingo: Cerrado</p>
+				<p style="margin-bottom: 0.5rem;" data-section="location" data-value="phonesLabel"><strong>📞 Teléfonos de Atención:</strong></p>
 				<p>📱 <a href="tel:5571589279">55 7158 9279</a></p>
-				<p style="margin-bottom: 1.5rem;">📱 <a href="tel:5541870200">55 4187 0200</a></p>		  
-			  
-              <a href="https://maps.google.com/?q=Depósito+Dental+San+Lorenzo+CDMX" class="btn btn-small" target="_blank" rel="noopener noreferrer" data-track="mapa-como-llegar">🗺️ Cómo llegar (Google Maps)</a>
+				<p style="margin-bottom: 1.5rem;">📱 <a href="tel:5541870200">55 4187 0200</a></p>
+
+              <a href="https://maps.google.com/?q=Depósito+Dental+San+Lorenzo+CDMX" class="btn btn-small" target="_blank" rel="noopener noreferrer" data-track="mapa-como-llegar" data-section="location" data-value="comoLlegar">🗺️ Cómo llegar (Google Maps)</a>
               <p style="margin-top: 0.5rem;">
-                <span style="background:#e8f5e9; padding:2px 8px; border-radius:20px; font-size:12px;">
+                <span class="verified-badge" data-section="location" data-value="verified">
                   ✅ Verificado en Google Maps
                 </span>
               </p>
             </div>
           </div>
-          
+
           <div class="location-map">
-              <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.456484228985!2d-99.06727152604239!3d19.305988244714634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce024538562f59%3A0x8d622039ac08960d!2sDep%C3%B3sito%20Dental%20San%20Lorenzo!5e0!3m2!1ses!2smx!4v1780702626107!5m2!1ses!2smx" 
-                  width="100%" 
-                  height="400" 
-                  style="border:0; border-radius: 1rem;" 
-                  allowfullscreen="" 
-                  loading="lazy" 
+              <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.456484228985!2d-99.06727152604239!3d19.305988244714634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce024538562f59%3A0x8d622039ac08960d!2sDep%C3%B3sito%20Dental%20San%20Lorenzo!5e0!3m2!1ses!2smx!4v1780702626107!5m2!1ses!2smx"
+                  width="100%"
+                  height="400"
+                  style="border:0; border-radius: 1rem;"
+                  allowfullscreen=""
+                  loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade">
               </iframe>
           </div>
@@ -237,10 +268,10 @@
     <!-- Contacto final -->
     <section id="contacto" class="contact-cta">
       <div class="container cta-card">
-        <h2>¿Necesitas una cotización urgente?</h2>
-        <p>Escríbenos por WhatsApp y te responderemos en menos de 10 minutos en horario laboral.</p>
+        <h2 data-section="contact" data-value="title">¿Necesitas una cotización urgente?</h2>
+        <p data-section="contact" data-value="desc">Escríbenos por WhatsApp y te responderemos en menos de 10 minutos en horario laboral.</p>
         <a href="https://wa.me/525541870200?text=Hola,%20necesito%20información%20de%20insumos%20dentales." class="btn btn-wa-large" target="_blank" rel="noopener noreferrer" data-track="whatsapp-cta-final">
-          💬 ¡Chatea con nosotros ahora!
+          <span data-section="contact" data-value="btnChat">💬 ¡Chatea con nosotros ahora!</span>
         </a>
       </div>
     </section>
@@ -250,18 +281,18 @@
     <div class="container footer-grid">
       <div>
         <img src="assets/img/logo.svg" alt="San Lorenzo Dental" width="160" class="logo-footer">
-        <p>Confianza y calidad para tu consultorio.</p>
+        <p data-section="footer" data-value="tagline">Confianza y calidad para tu consultorio.</p>
       </div>
       <div>
-        <h4>Enlaces</h4>
+        <h4 data-section="footer" data-value="enlacesTitle">Enlaces</h4>
         <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#inicio" data-section="nav" data-value="inicio">Inicio</a></li>
+          <li><a href="#productos" data-section="nav" data-value="productos">Productos</a></li>
+          <li><a href="#ubicacion" data-section="nav" data-value="ubicacion">Ubicación</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contacto rápido</h4>
+        <h4 data-section="footer" data-value="contactoTitle">Contacto rápido</h4>
 		<ul>
 			<li><a href="tel:5571589279" data-track="llamada-footer-1"> 📞 55 7158 9279</a></li>
 			<li><a href="tel:5541870200" data-track="llamada-footer-2"> 📞 55 4187 0200</a></li>
@@ -270,7 +301,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Depósito Dental San Lorenzo - Todos los derechos reservados · <button type="button" class="link-button" id="openPrivacyModal">Aviso de privacidad</button></p>
+      <p><span data-section="footer" data-value="rights">© 2026 Depósito Dental San Lorenzo - Todos los derechos reservados</span> · <button type="button" class="link-button" id="openPrivacyModal" data-section="footer" data-value="avisoPrivacidad">Aviso de privacidad</button></p>
     </div>
   </footer>
 
@@ -278,7 +309,7 @@
   <a href="https://wa.me/525541870200?text=Hola,%20vi%20su%20landing%20y%20me%20interesa%20cotizar" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp" data-track="whatsapp-flotante">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-  
+
   <!-- Lightbox para galería de fotos -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos ampliada">
     <button type="button" class="close-lightbox" aria-label="Cerrar galería">&times;</button>
@@ -292,21 +323,21 @@
   <div id="privacyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
     <div class="modal-box">
       <button type="button" class="modal-close" id="closePrivacyModal" aria-label="Cerrar aviso de privacidad">&times;</button>
-      <h2 id="privacyModalTitle">Aviso de Privacidad</h2>
+      <h2 id="privacyModalTitle" data-section="privacy" data-value="title">Aviso de Privacidad</h2>
       <div class="modal-body">
-        <p><strong>Responsable:</strong> Depósito Dental San Lorenzo, con domicilio en Av. Tláhuac 5171, 1er piso, San Lorenzo Tezonco, Iztapalapa, 09900, Ciudad de México.</p>
+        <p data-section="privacy" data-value="responsable"><strong>Responsable:</strong> Depósito Dental San Lorenzo, con domicilio en Av. Tláhuac 5171, 1er piso, San Lorenzo Tezonco, Iztapalapa, 09900, Ciudad de México.</p>
 
-        <h3>Datos que recabamos</h3>
-        <p>Cuando nos contactas por WhatsApp, llamada telefónica o correo electrónico, podemos recibir tu nombre, número telefónico, correo electrónico y los datos de tu pedido o cotización.</p>
+        <h3 data-section="privacy" data-value="datosTitle">Datos que recabamos</h3>
+        <p data-section="privacy" data-value="datosText">Cuando nos contactas por WhatsApp, llamada telefónica o correo electrónico, podemos recibir tu nombre, número telefónico, correo electrónico y los datos de tu pedido o cotización.</p>
 
-        <h3>Finalidad</h3>
-        <p>Usamos tus datos únicamente para cotizar, procesar pedidos, coordinar entregas y darte seguimiento comercial. No compartimos tu información con terceros ajenos a la operación del negocio.</p>
+        <h3 data-section="privacy" data-value="finalidadTitle">Finalidad</h3>
+        <p data-section="privacy" data-value="finalidadText">Usamos tus datos únicamente para cotizar, procesar pedidos, coordinar entregas y darte seguimiento comercial. No compartimos tu información con terceros ajenos a la operación del negocio.</p>
 
-        <h3>Derechos ARCO</h3>
-        <p>Puedes solicitar acceder, rectificar, cancelar u oponerte al uso de tus datos escribiendo a <a href="mailto:ddev_0507@hotmail.com">ddev_0507@hotmail.com</a>.</p>
+        <h3 data-section="privacy" data-value="arcoTitle">Derechos ARCO</h3>
+        <p data-section="privacy" data-value="arcoText">Puedes solicitar acceder, rectificar, cancelar u oponerte al uso de tus datos escribiendo a <a href="mailto:ddev_0507@hotmail.com">ddev_0507@hotmail.com</a>.</p>
 
-        <h3>Cambios a este aviso</h3>
-        <p>Este aviso puede actualizarse; la versión vigente siempre estará disponible en esta página.</p>
+        <h3 data-section="privacy" data-value="cambiosTitle">Cambios a este aviso</h3>
+        <p data-section="privacy" data-value="cambiosText">Este aviso puede actualizarse; la versión vigente siempre estará disponible en esta página.</p>
       </div>
     </div>
   </div>
